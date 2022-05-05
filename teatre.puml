@@ -1,0 +1,28 @@
+@startuml
+class Espectador{
+    String nom 
+    int edat 
+    double diners 
+-Espectador(String nom, int edat, double diners)
+-Espectador(int edat, double diners)
+-Espectador(double diners)  
+-String getNom( )  
+-int getEdat( )
+-boolean getMajorEdat( )
+-boolean teDiners(double preuEntrada)
+-double getPagarntrada(double preuEntrada)
+-void waled( )
+-double getWalet( )
+-double getRecarrega( )
+-String toStrring( )
+-void getSeients( )
+}
+class Obra{
+    String titul 
+    Time durada
+    String autor 
+    int edatMinima
+    
+}
+
+@enduml
