@@ -1,7 +1,5 @@
+
 import java.util.*;
-
-
-
 
 // -------------------------Clase Espectador------------------------------------
 class Espectador {
@@ -11,8 +9,8 @@ class Espectador {
     int edat;                 // edat espctador.
     double diners;            // diners espectador en el walet. 
     boolean majorEdat;        // major de edat si o no
-    boolean teDiners;         // Te diner per pagar l'entrada si o no
-    
+    boolean teDiners=false;         // Te diner per pagar l'entrada si o no
+    //String seient= " ";
     // un que accepte 3 arguments (nom, edat i diners)
     public Espectador(String nom, int edat,double diners ){
         this.nom=nom;
@@ -26,11 +24,9 @@ class Espectador {
         this.diners=diners;
     }
     //un que accepte 1 argument (diners), el nom el posarem com «anonim» i edat a 99.
-    public Espectador(double diners ){
-        this.nom="anonim";
-        this.edat=999;
-        this.diners=diners;
-    }
+    //public Espectador(String seient ){
+       // this.seient= " ";
+   // }
     // Dona valor a nom
     public String getNom(){
         Scanner entrada = new Scanner(System.in);
@@ -56,8 +52,8 @@ class Espectador {
     }
     public boolean teDiners( double preuEntrada){
         //boolean teDiners;
-        if(this.diners<preuEntrada){
-            this.teDiners=false;
+        if(this.diners>=preuEntrada){
+            this.teDiners=true;
         }
         return this.teDiners;
     }
@@ -75,13 +71,16 @@ class Espectador {
         }
         return this.diners;
     } 
+    // missatge benvinguda
     public void walet(){
         System.out.println("Per agrair els nostres nous espectadors regalem 2€ al teu moneder!");
     }
+    //regal 2€
     public double getWalet(){
         //newWalet = 2;
         this.diners= +2.00;
         return this.diners;
+    // Fer una rcarrega    
     } public double getRecarrega(){
         double recarregaWalet = 0;
         Scanner entrada = new Scanner(System.in);
@@ -90,11 +89,14 @@ class Espectador {
         this.diners= this.diners + recarregaWalet;
         return this.diners;
     }
+    // String info usuari
     @Override
     public String toString(){
-        String infoUser="L'usuari "+this.nom+ " amb l'edad de "+ this.edat+", és major d'edat?  "+this.majorEdat+" ,cuants diners te? "+this.diners+ "€. Te prous diners per pagar l'entrada? "+ this.teDiners;
+        String infoUser= this.nom;
+        //"L'usuari "+this.nom+ " amb l'edad de "+ this.edat+", és major d'edat?  "+this.majorEdat+" ,cuants diners te? "+this.diners+ "€. Te prous diners per pagar l'entrada? "+ this.teDiners;
         return infoUser;
     }
+    //Marcar seient que vol comprar
     public void getSeients(String [][]a, String seient){
         if (teDiners=true){
         switch(seient){
@@ -152,7 +154,7 @@ class Espectador {
     }
     
 // ----------------------funcions main-----------------
-   
+  // Creem la sala posem els index per a que el usuari identifique la linea i la fila 
   public static void creaSala(String a [] [], int index) {
     a [0] [0] =  "  " ;
     a [0] [1] = " A ";
@@ -164,7 +166,7 @@ class Espectador {
     a [3] [0] = "3 ";
     a [4] [0] = "4 ";
 
-
+// Posem tots els seients en buit marcan amb un "_"
     for(int i= 1 ; i < index;i++  ){
         for (int j = 1; j < index; j++){
             a [i] [j]= " _ " ;
@@ -182,6 +184,7 @@ class Espectador {
             }
         }
     }
+    // Imprimim el resultat
     public static void imprimirSeients(String [][]a,int index){
         for(int i= 0 ; i < index;i++){
             for (int j = 0; j < 1; j++){
@@ -194,12 +197,13 @@ class Espectador {
                 }
             }
     }
+    // Misatge no disponible
     public static void nodisponible (){
         System.out.println("No disponible temporalment");
       }
 
        
-      
+    //----------------------Main------------------------  
     public static void main (String [] args){
         //variables Espectador
         String nom;
@@ -209,18 +213,20 @@ class Espectador {
         double preuEntrada= 4.23;
         boolean majorEdat;
         String infoUser;
+        //----- Declarem usuari i l'iniciem donan valors inicials
         Espectador usuari1 ;
+        usuari1 = new Espectador("usuari",0,0.0);
         // variables menu
         Scanner entrada = new Scanner(System.in);
         int index= 5;
         String [] [] seients = new String [index] [index];
-        usuari1 = new Espectador("usuari",0,0.0);
+        
 
         // Accions usuari
-                    usuari1.getNom();
-                    usuari1.getEdat();
-                    usuari1.walet();
-                    usuari1.getWalet();
+                    //usuari1.getNom();
+                    //usuari1.getEdat();
+                    //usuari1.walet();
+                    //usuari1.getWalet();
                     usuari1.getMajorEdat();
                     usuari1.teDiners(preuEntrada);
                     infoUser= usuari1.toString();
@@ -238,3 +244,4 @@ class Espectador {
             
         }  
 }
+
