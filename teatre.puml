@@ -7,22 +7,19 @@ class Espectador{
 -Espectador(int edat, double diners)
 -Espectador(double diners)  
 -String getNom( )  
+-String setNom( )
+-int getEdat( )
 -int getEdat( )
 -boolean getMajorEdat( )
+-boolean setMajorEdat( )
 -boolean teDiners(double preuEntrada)
--double getPagarntrada(double preuEntrada)
+-double pagarntrada(double preuEntrada)
 -void waled( )
--double getWalet( )
--double getRecarrega( )
+-double setWalet( )
+-double setRecarrega( )
 -String toStrring( )
--void getSeients( )
+-void seients( )
 }
-class Obra{
-    String titul 
-    Time durada
-    String autor 
-    int edatMinima
-    
-}
+
 
 @enduml
