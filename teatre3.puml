@@ -1,0 +1,13 @@
+@startuml
+
+class Sessio{
+    Obra obra
+    double preuEntrada
+    String data
+    -Sessio (Obra obra, double preu, String data)
+    -double getPreu ()
+    -String getDate ()
+    -String toString ()
+
+}
+@enduml

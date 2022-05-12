@@ -1,0 +1,25 @@
+@startuml
+class Obra{
+    String titul 
+    Time durada
+    String autor 
+    int edatMinima
+    -Obra(String nom, String durada, String autor, int edatMinima)
+    -String getTitul ()
+    -String setTitul ()
+    -String getDurada ()
+    -String setDurada ()
+    -String getAutor ()
+    -String setAutor ()
+    -int getEdatMinima ()
+    -int getEdat ()
+    -String toString ()
+    -String setNom (String nom)
+    -void getNom(Stirng nom)
+}
+
+
+
+
+
+@enduml
