@@ -1,3 +1,7 @@
+/**
+ * @author nataliaCastell
+ * @version 1.0
+ */
 import java.util.*;
 import teatregrama.Espectador;
 import teatregrama.Obra;
@@ -22,12 +26,24 @@ public class main {
 
         return opcions;
     }
+    /**
+     * Imprimeix el menu
+     * @param opcions: llistar del menu
+     * @param i: recorrer array
+     * @return no retorna res
+     */
     public static void imprimirMenu (String []vector){
         System.out.println("Escull una opcio");
         for (int i = 1; i< vector.length; i++){
             System.out.println(vector[i]);
         }
       }
+      /**
+       * Convertir String en char per elegir del l'opcio del menu
+       * @param a: demanem el string 
+       * @param b: on guardem el char 
+       * @return 
+       */
     public static char demanaropcio(String a) {
         Scanner entrada = new Scanner(System.in);
         a= entrada.nextLine();
@@ -35,7 +51,16 @@ public class main {
             return b;
         }
 
- //--------------------------funcions accions ---------------------------       
+ //--------------------------funcions accions ---------------------------   
+        /**
+         * funcio per demanar dades de la obra
+         * @param a: guardem nom de l'obra
+         * @param b: guardem la durada de l'obra
+         * @param c: guardem l'autor de l'obra
+         * @param d: guardem l'edat minima
+         * @param x: index de l'array cartelera
+         * @return index de l'array cartelera
+         */
     public static int dadesObra(Obra cartelera[], int x){
         Scanner sc = new Scanner(System.in); 
         System.out.println("Nom de l'obra: ");
@@ -50,6 +75,15 @@ public class main {
         x++;
         return x;
     }
+    /**
+     * Guarda les dades de un nou usuari
+     * @param a: guardem el nom de l'usuari
+     * @param b: guardem edat de l'usuari
+     * @param c: guardem els diners de l'usuari
+     * @param llista[]: array de Espectador on guardem els usuaris
+     * @param x: comptar_usuaris creats
+     * @return Torna el comptador i s'emmagatazema en comptar_usuaris
+     */
     public static int nouUsuari(Espectador llista[],int x){
         Scanner sc = new Scanner(System.in); 
         System.out.println("Nom Usuari: ");
@@ -65,12 +99,24 @@ public class main {
         System.out.println("El teu numero de usuari es "+x+" recorda'l per comprar una entrada");
         return x;
     }
+    /**
+     * imprimir llistat de usuaris
+     * @param llista[]: array de Espectador on guardem els usuaris
+     * @return void: no retorna res
+     */
     public static void llistarUsuaris(Espectador llista [], int x){
         for (int i = 0 ; i < x; i++){
             System.out.println(llista[i].toString());
         }
     }
-    public static void llistarSessions(Sessio sessions [], int x, Obra[]cartelera){
+    /**
+     * imprimir llistat de sessions
+     * @param sessions: array de tipus sessio on guardem les sessions
+     * @param x: comptar_sessio
+     * @param i: recorrer l'array
+     * @return no retorna res
+     */
+    public static void llistarSessions(Sessio sessions [], int x){
         //System.out.println("Llistat avans --> "+p);
         for (int i = 0 ; i < x; i++){
             String linea= sessions[i].toString();
@@ -79,6 +125,13 @@ public class main {
             System.out.println(linea + " amb el preu de"+ preuEntrada);
         }
     }
+    /**
+     * imprimir llistat de Obres
+     * @param cartelera[]: array de tipus obra
+     * @param x: comptar_obra
+     * @param i: recorrer l'array
+     * @return no retorna res
+     */
     public static void llistarObra(Obra cartelera [], int x){
         //System.out.println("llista obra");
         for (int i = 0 ; i < x; i++){
@@ -86,6 +139,14 @@ public class main {
             System.out.println(cartelera[i].toString());
         }
     }
+    /**
+     * Demanem les dades de sessions i guardem en l'array de tipus Obra
+     * @param sessions[]: array de sessions de tipus sessions
+     * @param x: comptar_sessio
+     * @param cartelera[]: array de tipus obra
+     * @param z: comptar_obra
+     * @return torna un enter i el guardem en comptar_sessio
+     */
     public static int dadesSessio(Sessio [] sessions, int x,Obra [] cartelera, int z){
         Scanner sc = new Scanner(System.in); 
         llistarObra(cartelera,z);
@@ -106,7 +167,11 @@ public class main {
         return x;
 
     }
-    
+    /**
+     * Creem visualment un seient buit per defecte a tots els seients
+     * @param seients[][]: array de tipus Espectador
+     * @param i: recorrer l'array
+     */
     public static void crearSalaBuida(Espectador [][]seients){
         int index= 5;
         for(int i= 0 ; i < index;i++){
@@ -115,13 +180,24 @@ public class main {
             }
         }
     }
+    /**
+     * Comprar entrades 
+     * @param sessions[]:  array de tipus Sessio
+     * @param seients[]: array de tipus Espectador
+     * @param comptar_compres: comptador de compres realitzades
+     * @param llista[]: array de tipus Espectador 
+     * @param cartelera[]: array de tipus obra
+     * @param comptar_obra: comptador de obres
+     * @param comptar_sessio: compradors de sessions
+     * @return no retorna res
+     */
     public static int comprarEntrades(Sessio [] sessions,Espectador seients [][],int comptar_compres, Espectador []llista, Obra []cartelera, int comptar_obra, int comptar_sessio){
         Scanner sc = new Scanner(System.in); 
         llistarObra(cartelera, comptar_obra);
         int obra;
         System.out.println("Quina obra vols veure?");
         obra=sc.nextInt();
-        llistarSessions(sessions,comptar_sessio,cartelera);
+        llistarSessions(sessions,comptar_sessio);
         System.out.println("A quina sessio vols veure-la?");
         int sessio;
         sessio=sc.nextInt();
@@ -133,6 +209,16 @@ public class main {
 
     }
 
+    /**
+     * Imprimeix la sala de butaques si troba l'element per defecte O = buit l'imprimeix si no imprimeix un X = ocupat
+     * @param seients array bidimensional de tipus espectador
+     * @param index: indx array bidimensional
+     * @param i: recorre el primer for del array bidimensional
+     * @param j: recorre el segon for del array bidimensional
+     * @param linea: String que imprimirem despres de formar la sala 
+     * @param nom: guardem el parametre X qu s'imprimeix en comptes del nom del espectador
+     * @return no retorna res     
+     */
     private static void imprimirSala(Espectador[][] seients) {
         String linea ="";
             int index= 5;
@@ -160,6 +246,14 @@ public class main {
     }
 }
 
+/**
+     * Creem per defecte seients buits en l'array
+     * @param seients array bidimensional de tipus espectador
+     * @param comprar_compres comptador de compres realitzades
+     * @param llista[] array de Espectador on guardem els usuaris
+     * @return returna un enter     
+     */
+
     private static int seientBuit(Espectador[][] seients, int comptar_compres, Espectador[] llista) {
         int index= 5;
         for(int i= 0 ; i < index;i++){
@@ -169,13 +263,36 @@ public class main {
         }
         return comptar_compres;
     }
+    /**
+     * imprimim l'Afluencia dels espectador
+     * @param afluenciaEspectador array de String
+     * @param comptar_compres comptador de compres realitzades
+     * @param i: recorrer l'array
+     * @return no retorna res     
+     */
     public static void imprimirAfluencia(String [] afluenciaEspectador, int comptar_compres){
         for (int i =0;i < comptar_compres; i++ ){
             System.out.println(afluenciaEspectador[i]);
         }
 
     }
-    
+    /**
+     * Main desde on cridem a les diferents funcions
+     * @param opcions[]: array del menu 
+     * @param seleccio: guadem l'opcio entrada per l'usuari
+     * @param eleccio: guardem el primer char de seleccio
+     * @param end: Variable que tanca el do While 
+     * @param index: index de l'array bidimensional
+     * @param comptar_usuaris:
+     * @param comptar_obra:
+     * @param comptar_sessio:
+     * @param comptar_compres:
+     * @param afluenciaEspectador[]:
+     * @param cartelera[]: array de tipus obra
+     * @param llista[]: array de Espectador on guardem els usuaris
+     * @param seients[][]: array de tipus Espectador
+     * @param sessions[]:  array de tipus Sessio
+     */
     public static void main(String[] args) {
         //Variables:
         String[] opcions = new String[7];
@@ -188,7 +305,6 @@ public class main {
         int comptar_sessio=0;
         int comptar_compres=0;
         String [] afluenciaEspectador= new String [10];
-
         Obra [] cartelera = new Obra [10];
         Espectador [] llista = new Espectador [10];
         Espectador [] [] seients = new Espectador [index] [index];
@@ -198,53 +314,54 @@ public class main {
         //Accions:
         opcions = menu(opcions);
 
-       do{ imprimirMenu(opcions);
-        eleccio= demanaropcio (seleccio);
-        switch(eleccio){
-            // nou usuari
-            case 'a':
-                comptar_usuaris=nouUsuari(llista,comptar_usuaris);
-            break;
+        do{ imprimirMenu(opcions);
+            eleccio= demanaropcio (seleccio);
+            switch(eleccio){
+                // nou usuari
+                case 'a':
+                    comptar_usuaris=nouUsuari(llista,comptar_usuaris);
+                break;
 
-            //Nova obra
-            case 'b':
-                comptar_obra=dadesObra(cartelera,comptar_obra);
-            break;
+                //Nova obra
+                case 'b':
+                    comptar_obra=dadesObra(cartelera,comptar_obra);
+                break;
 
-            //Nova sessio
-            case 'c':
-                comptar_sessio=dadesSessio(sessions,comptar_sessio,cartelera, comptar_obra);
+                //Nova sessio
+                case 'c':
+                    comptar_sessio=dadesSessio(sessions,comptar_sessio,cartelera, comptar_obra);
+                break;
+
+                //Llistar espectadors 
+                case 'd':
+                    llistarUsuaris(llista,comptar_usuaris);
+                break;
+
+                //llistar Obra
+                case 'e':
+                    //System.out.println("case e"+ comptar_obra);
+                    llistarObra(cartelera,comptar_obra);
+                break;
+
+                //llistar Sessions
+                case 'f':
+                    llistarSessions(sessions,comptar_sessio);
+                break;
+
+                // comprar entrada, guarda compres i les compta amb el comptador comptar_compres
+                case 'g':
+                    comptar_compres=comprarEntrades(sessions,seients,comptar_compres, llista, cartelera, comptar_obra, comptar_sessio);
+                break;
+
+                // imprimir l'Afluencia de espectadors
+                case 'h':
+                    imprimirAfluencia(afluenciaEspectador,comptar_compres);
+                break;
                 
-            break;
-
-            //Llistar espectadors 
-            case 'd':
-                llistarUsuaris(llista,comptar_usuaris);
-            break;
-
-            //Comprar entrada
-            case 'e':
-                System.out.println("case e"+ comptar_obra);
-                
-                llistarObra(cartelera,comptar_obra);
-            break;
-            //llistar Sessions
-            case 'f':
-                llistarSessions(sessions,comptar_sessio,cartelera);
-            break;
-
-            case 'g':
-                comptar_compres=comprarEntrades(sessions,seients,comptar_compres, llista, cartelera, comptar_obra, comptar_sessio);
-            
-            break;
-
-            case 'h':
-                imprimirAfluencia(afluenciaEspectador,comptar_compres);
-            break;
-
-            case 'i':
-            end=true;
-            break;
+                //sortir
+                case 'i':
+                    end=true;
+                break;
         }
     }while(!end);
 
