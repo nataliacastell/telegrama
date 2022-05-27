@@ -6,13 +6,7 @@ public class Obra{
     String autor;           // Nom del autor obra
     int edatMinima;         // Edat minima per veure l'obra
     
-    //Contructor per a una obra
-    public Obra(String nom, String durada, String autor, int edatMinima){
-        this.titul=nom;
-        this.durada= durada;
-        this.autor= autor;
-        this.edatMinima= edatMinima;
-    }
+   
     // demana nom a una obra
     public String getTitul(){
        return this.titul;
